@@ -52,11 +52,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className={`text-3xl font-black tracking-tighter flex items-center gap-1 group transition-colors duration-300 ${isSolid ? "text-black" : "text-white"}`}>
-              <span className={`bg-clip-text text-transparent bg-gradient-to-r transition-all duration-300 ${isSolid ? "from-black to-gray-600 group-hover:to-black" : "from-white to-gray-400 group-hover:to-white"}`}>
-                Urban
-              </span>
-              <span className="w-2 h-2 rounded-full bg-rose-500 group-hover:bg-rose-400 group-hover:scale-125 transition-all duration-300"></span>
+            <Link href="/" className="flex items-center">
+              <Image 
+                src="/total%20apparel.png" 
+                alt="Total Apparel" 
+                width={140} 
+                height={40} 
+                className={`transition-all duration-300 object-contain h-7 md:h-8 w-auto ${isSolid ? "" : "brightness-0 invert"}`}
+              />
             </Link>
           </div>
 
@@ -245,7 +248,15 @@ const Navbar = () => {
             >
               {/* Drawer Header */}
               <div className="flex items-center justify-between p-5 md:p-6 border-b border-gray-100 bg-white">
-                <span className="text-lg font-black tracking-[0.15em] uppercase text-gray-900">Menu</span>
+                <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center">
+                  <Image 
+                    src="/total%20apparel.png" 
+                    alt="Total Apparel" 
+                    width={120} 
+                    height={32} 
+                    className="object-contain h-6 w-auto"
+                  />
+                </Link>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-black bg-gray-50 hover:bg-gray-100 rounded-full transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function PromoBanners() {
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: {},
     visible: {
       transition: {
@@ -16,7 +16,7 @@ export default function PromoBanners() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
@@ -26,7 +26,7 @@ export default function PromoBanners() {
   };
 
   // Text staggering variants for scroll reveal
-  const textContainer = {
+  const textContainer: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -36,7 +36,7 @@ export default function PromoBanners() {
     },
   };
 
-  const textItem = {
+  const textItem: any = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -49,14 +49,14 @@ export default function PromoBanners() {
   };
 
   // Continuous subtle movement ("nara chara") made ultra-smooth
-  const floatImage = {
+  const floatImage: any = {
     animate: {
       scale: [1, 1.04, 1],
       transition: { duration: 20, repeat: Infinity, ease: "easeInOut" }
     }
   };
 
-  const floatText = {
+  const floatText: any = {
     animate: {
       y: [0, -3, 0],
       transition: { duration: 6, repeat: Infinity, ease: "easeInOut" }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronUp, ChevronDown } from "lucide-react";
 
@@ -67,7 +68,7 @@ export default function Footer() {
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
           className="flex whitespace-nowrap"
         >
-          {Array(15).fill("URBAN - 10% OFF ON YOUR FIRST ORDER").map((text, i) => (
+          {Array(15).fill("TOTAL APPAREL - 10% OFF ON YOUR FIRST ORDER").map((text, i) => (
              <span key={i} className="mx-6 flex items-center text-white text-[11px] font-bold tracking-widest uppercase">
                <span className="w-1.5 h-1.5 rounded-full border border-white mr-3 shrink-0"></span>
                {text}
@@ -82,8 +83,14 @@ export default function Footer() {
           
           {/* Column 1: Brand & Socials */}
           <div className="flex flex-col">
-            <Link href="/" className="mb-6">
-              <span className="text-3xl font-black tracking-tighter text-black uppercase">URBAN<span className="text-rose-500">.</span></span>
+            <Link href="/" className="mb-6 flex items-center">
+              <Image 
+                src="/total%20apparel.png" 
+                alt="Total Apparel" 
+                width={140} 
+                height={40} 
+                className="object-contain h-8 w-auto"
+              />
             </Link>
             <p className="text-[13px] text-gray-500 leading-relaxed mb-8 max-w-[250px]">
               Premium streetwear and high-fashion retailer since 2012. We deliver curated collections globally.
@@ -187,7 +194,7 @@ export default function Footer() {
         <div className="max-w-[1400px] mx-auto py-5 px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 relative">
           
           <p className="text-[12px] text-gray-500">
-            Copyright 2026 © <span className="font-bold text-black">URBAN</span> HTML Template.
+            Copyright 2026 © <span className="font-bold text-black">Total Apparel</span>.
           </p>
 
           {/* Colored Payment Icons */}
