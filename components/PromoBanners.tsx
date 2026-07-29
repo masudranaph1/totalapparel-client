@@ -72,7 +72,7 @@ export default function PromoBanners() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-[1fr_1fr_auto] gap-4 md:gap-6 min-h-[800px]"
+          className="grid grid-cols-1 md:grid-cols-8 md:grid-rows-[1fr_1fr_auto] gap-4 md:gap-6 min-h-[800px]"
         >
           
           {/* Block 1: Flat 40% OFF */}
@@ -221,43 +221,6 @@ export default function PromoBanners() {
               </motion.div>
             </motion.div>
           </motion.div>
-
-          {/* Block 5: Top Brands */}
-          <motion.div 
-            variants={itemVariants}
-            className="group relative overflow-hidden bg-[#e4dfd7] rounded-sm md:col-span-4 md:col-start-9 md:row-span-3 md:row-start-1 flex flex-col items-center pt-20 cursor-pointer min-h-[600px]"
-          >
-            <div className="relative z-10 flex flex-col items-center text-center px-6">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-4">
-                Our Offers
-              </span>
-              <motion.div variants={floatText} animate="animate">
-                <motion.h2 
-                  variants={textContainer}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="text-3xl md:text-4xl lg:text-5xl font-black italic tracking-tighter text-[#2a3042] uppercase mb-10 motion-safe:group-hover:-translate-y-2 transition-transform duration-500"
-                >
-                  <motion.span variants={textItem} className="block">Top Brands</motion.span>
-                </motion.h2>
-              </motion.div>
-              <Link href="#" className="flex items-center gap-3 text-xs font-bold tracking-[0.2em] text-black uppercase border border-black px-8 py-3.5 hover:bg-black hover:text-white transition-colors duration-300">
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                Shop Now
-              </Link>
-            </div>
-
-            <motion.div variants={floatImage} animate="animate" className="absolute inset-x-0 bottom-0 h-2/3 z-0">
-              <Image 
-                src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=800&auto=format&fit=crop" 
-                alt="Graffiti Hoodie" 
-                fill 
-                className="object-cover object-top transition-transform duration-1000 group-hover:scale-110"
-              />
-            </motion.div>
-          </motion.div>
-
         </motion.div>
       </div>
     </section>
