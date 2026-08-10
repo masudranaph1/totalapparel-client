@@ -143,7 +143,7 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
         {/* Badges Top Left */}
         <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
            {product.id % 3 === 0 && (
-            <span className="bg-[#b3709b] text-white text-[9px] font-semibold px-2 py-0.5 rounded-[2px] shadow-sm w-fit">
+            <span className="bg-[#0F172A] text-[#C9A227] text-[9px] font-bold tracking-[0.1em] px-2.5 py-1 rounded-sm shadow-sm w-fit uppercase">
               New Arrival
             </span>
            )}
@@ -151,7 +151,7 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
 
         {/* Tooltip on Hover */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-          <div className="bg-[#2a2a2a] text-white text-[12px] font-medium px-4 py-2 rounded shadow-lg whitespace-nowrap">
+          <div className="bg-white/95 backdrop-blur-md text-[#1A1A1A] border border-gray-100 text-[12px] font-bold px-4 py-2 rounded-lg shadow-xl whitespace-nowrap">
             {product.name}
           </div>
         </div>
@@ -171,10 +171,10 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
       </div>
 
       {/* Product Info */}
-      <div className="flex flex-col">
+      <div className="flex flex-col px-1">
         <div className="flex items-center gap-3 mb-2">
           <div className="flex items-center gap-1">
-             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#facc15]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C9A227]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <span className="text-[11px] font-bold text-gray-700">4.5</span>
           </div>
         </div>
@@ -204,6 +204,16 @@ export default function ProductGrid() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isCategoryOpen, setIsCategoryOpen] = useState(true);
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(true);
+  const [isColorOpen, setIsColorOpen] = useState(true);
+  const [activeColor, setActiveColor] = useState("All");
+
+  const colorsList = [
+    { name: 'Signature Gold', hex: '#C9A227' },
+    { name: 'Obsidian Black', hex: '#0F172A' },
+    { name: 'Pure White', hex: '#FFFFFF' },
+    { name: 'Midnight Navy', hex: '#1e3a8a' },
+    { name: 'Steel Gray', hex: '#9ca3af' },
+  ];
 
   // Pagination / Scroll state
   const [visibleCount, setVisibleCount] = useState(8);
@@ -227,6 +237,7 @@ export default function ProductGrid() {
   const handleClearAll = () => {
     setActiveCategory("All Categories");
     setActiveSubCategory("All");
+    setActiveColor("All");
     setSearchQuery("");
   };
 
@@ -306,7 +317,7 @@ export default function ProductGrid() {
                            className="flex items-center cursor-pointer group relative"
                          >
                            {isActive && (
-                             <motion.div layoutId="activeCategoryDot" className="absolute -left-4 w-1.5 h-1.5 rounded-full bg-black" />
+                             <motion.div layoutId="activeCategoryDot" className="absolute -left-4 w-1.5 h-1.5 rounded-full bg-[#C9A227]" />
                            )}
                            <span className={`text-sm transition-all duration-300 ${isActive ? 'font-medium text-black translate-x-1' : 'font-light text-gray-500 group-hover:text-black'}`}>
                              {cat}
@@ -344,8 +355,8 @@ export default function ProductGrid() {
                            onClick={() => setActiveSubCategory(sub)}
                            className={`cursor-pointer px-4 py-2 rounded-full border text-[11px] uppercase tracking-wider transition-all duration-300 ${
                              isActive 
-                              ? 'bg-black text-white border-black shadow-md scale-105' 
-                              : 'bg-white text-gray-500 border-gray-200 hover:border-gray-900 hover:text-gray-900'
+                              ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-md scale-105' 
+                              : 'bg-white text-gray-500 border-gray-200 hover:border-[#1A1A1A] hover:text-[#1A1A1A]'
                            }`}
                          >
                            {sub}
@@ -362,9 +373,51 @@ export default function ProductGrid() {
               <span className="text-[11px] font-semibold text-gray-400 group-hover:text-black uppercase tracking-[0.2em] transition-colors">Sizes (29)</span>
               <span className="text-gray-300 group-hover:text-black transition-colors">+</span>
             </div>
-            <div className="border-t border-gray-200 pt-6 flex justify-between cursor-pointer group">
-              <span className="text-[11px] font-semibold text-gray-400 group-hover:text-black uppercase tracking-[0.2em] transition-colors">Colors (49)</span>
-              <span className="text-gray-300 group-hover:text-black transition-colors">+</span>
+            
+            {/* Colors - Premium Swatch Design */}
+            <div className="border-t border-gray-200 pt-6 flex flex-col space-y-4">
+              <p 
+                 className="text-[11px] font-semibold text-gray-400 group-hover:text-black uppercase tracking-[0.2em] flex justify-between cursor-pointer group transition-colors"
+                 onClick={() => setIsColorOpen(!isColorOpen)}
+               >
+                 Colors (49)
+                 <motion.span animate={{ rotate: isColorOpen ? 180 : 0 }} className="text-gray-300 group-hover:text-black">▼</motion.span>
+               </p>
+               <AnimatePresence>
+                 {isColorOpen && (
+                   <motion.div 
+                     initial={{ height: 0, opacity: 0 }} 
+                     animate={{ height: "auto", opacity: 1 }}
+                     exit={{ height: 0, opacity: 0 }}
+                     className="flex flex-wrap gap-3 overflow-hidden pt-2"
+                   >
+                     {colorsList.map((color) => {
+                       const isActive = activeColor === color.name;
+                       return (
+                         <div 
+                           key={color.name}
+                           title={color.name}
+                           onClick={() => setActiveColor(color.name)}
+                           className={`relative w-8 h-8 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 ${
+                             isActive ? 'scale-110 shadow-md ring-2 ring-[#C9A227] ring-offset-2' : 'hover:scale-110 hover:shadow-sm'
+                           }`}
+                           style={{ 
+                             backgroundColor: color.hex,
+                             border: color.name === 'Pure White' ? '1px solid #e5e7eb' : 'none'
+                           }}
+                         >
+                           {isActive && (
+                             <motion.div 
+                               initial={{ scale: 0 }} animate={{ scale: 1 }}
+                               className={`w-2 h-2 rounded-full ${color.name === 'Pure White' ? 'bg-[#1A1A1A]' : 'bg-white'}`}
+                             />
+                           )}
+                         </div>
+                       );
+                     })}
+                   </motion.div>
+                 )}
+               </AnimatePresence>
             </div>
           </motion.aside>
 
@@ -383,7 +436,7 @@ export default function ProductGrid() {
                  </motion.h2>
                  
                  {/* Count Badge */}
-                 <div className="absolute -top-4 -right-8 w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-sm font-semibold shadow-sm border border-gray-100">
+                 <div className="absolute -top-4 -right-8 w-10 h-10 bg-[#FAFAFA] rounded-full flex items-center justify-center text-sm font-bold text-[#C9A227] shadow-sm border border-gray-100">
                     {filteredProducts.length}
                  </div>
                  
@@ -408,7 +461,7 @@ export default function ProductGrid() {
             {/* Active Filters Bar */}
             <div className="flex flex-wrap gap-3 mb-10 min-h-[32px]">
               <AnimatePresence>
-                {(activeCategory !== 'All Categories' || activeSubCategory !== 'All' || searchQuery) && (
+                {(activeCategory !== 'All Categories' || activeSubCategory !== 'All' || activeColor !== 'All' || searchQuery) && (
                   <>
                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-[10px] uppercase tracking-widest text-gray-400 font-bold self-center mr-2">Active Filters:</motion.span>
                     {activeCategory !== 'All Categories' && (
@@ -427,6 +480,15 @@ export default function ProductGrid() {
                         className="bg-gray-100 text-black text-[10px] font-bold px-4 py-2 rounded-full flex items-center tracking-[0.1em] cursor-pointer hover:bg-gray-200 transition-colors"
                       >
                          {activeSubCategory} <span className="ml-2 font-black">×</span>
+                      </motion.div>
+                    )}
+                    {activeColor !== 'All' && (
+                      <motion.div 
+                        initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }}
+                        onClick={() => setActiveColor('All')}
+                        className="bg-gray-100 text-black text-[10px] font-bold px-4 py-2 rounded-full flex items-center tracking-[0.1em] cursor-pointer hover:bg-gray-200 transition-colors"
+                      >
+                         Color: {activeColor} <span className="ml-2 font-black">×</span>
                       </motion.div>
                     )}
                   </>
@@ -459,7 +521,7 @@ export default function ProductGrid() {
                       <span className="text-4xl mb-4 opacity-50">📭</span>
                       <h3 className="text-2xl font-serif italic text-black mb-2">No matching pieces found</h3>
                       <p className="text-gray-500 font-light max-w-md mx-auto">We couldn't find any products matching your current filters. Try adjusting your search criteria.</p>
-                      <button onClick={handleClearAll} className="mt-8 px-8 py-3 bg-black text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full hover:bg-brand-accent transition-all duration-500 shadow-lg hover:shadow-xl">
+                      <button onClick={handleClearAll} className="mt-8 px-10 py-4 bg-[#1A1A1A] text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full hover:bg-[#C9A227] hover:shadow-[0_0_40px_rgba(201,162,39,0.4)] transition-all duration-500 shadow-xl">
                         Reset Collection
                       </button>
                     </motion.div>
@@ -479,7 +541,7 @@ export default function ProductGrid() {
                       }, 600);
                     }}
                     disabled={isLoadingMore}
-                    className="group relative px-10 py-4 bg-black text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-brand-accent transition-all duration-500 overflow-hidden shadow-xl"
+                    className="group relative px-12 py-5 bg-[#1A1A1A] text-white text-[12px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-[#C9A227] hover:shadow-[0_0_40px_rgba(201,162,39,0.4)] transition-all duration-500 overflow-hidden shadow-2xl"
                   >
                      <div className="absolute inset-0 w-0 bg-white group-hover:w-full transition-all duration-500 ease-out z-0 opacity-10" />
                      <div className="relative z-10 flex items-center gap-3">

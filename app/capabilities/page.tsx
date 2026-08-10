@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const categories = [
   "01 Apparel Sourcing",
@@ -16,46 +17,39 @@ const categories = [
 
 export default function CapabilitiesPage() {
   return (
-    <main className="w-full min-h-screen bg-white text-black overflow-hidden">
+    <main className="w-full min-h-screen bg-white text-[#1A1A1A] overflow-hidden">
       
-      {/* HERO SECTION - REDESIGNED TO LIGHT THEME */}
-      <section className="relative w-full min-h-[90vh] pt-40 pb-20 px-4 sm:px-6 lg:px-12 bg-[#F9F9F6] text-black flex flex-col justify-center overflow-hidden">
+      {/* HERO SECTION - LUXURY DOCUMENTARY STYLE */}
+      <section className="relative w-full min-h-[85vh] pt-40 pb-20 px-4 sm:px-6 lg:px-12 bg-white flex flex-col justify-center overflow-hidden border-b border-gray-100">
         
         {/* Background Ambient Animation */}
-        <motion.div 
-          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none"
-        />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A227]/5 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gray-100 rounded-full blur-[100px]" />
+        </div>
 
         <div className="max-w-[1600px] mx-auto w-full flex flex-col lg:flex-row justify-between gap-16 relative z-10">
           
           {/* Left Title */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             className="w-full lg:w-1/2 flex flex-col justify-center"
           >
-            <div className="overflow-hidden mb-6">
-               <motion.h1 
-                 initial={{ y: "100%" }}
-                 animate={{ y: 0 }}
-                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-medium tracking-tighter leading-[0.9]"
-               >
-                 Technical<br/>
-                 <span className="italic font-serif text-brand-accent">Expertise.</span>
-               </motion.h1>
+            <div className="inline-flex items-center space-x-2 text-sm font-semibold tracking-wider text-[#C9A227] uppercase mb-8">
+              <span className="w-8 h-px bg-[#C9A227]" />
+              <span>Core Competencies</span>
             </div>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="text-xl md:text-3xl text-gray-500 font-light tracking-wide mt-4 max-w-lg leading-snug"
-            >
-              Seamless Execution across the entire manufacturing ecosystem.
-            </motion.p>
+            
+            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-medium tracking-tighter leading-[0.9] text-[#1A1A1A]">
+              Technical<br/>
+              <span className="italic font-serif text-[#C9A227]">Expertise.</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-500 font-light tracking-wide mt-8 max-w-lg leading-relaxed">
+              Seamless execution across the entire manufacturing ecosystem, engineered for the world's leading brands.
+            </p>
           </motion.div>
           
           {/* Right Interactive List */}
@@ -63,7 +57,7 @@ export default function CapabilitiesPage() {
             <motion.div 
               variants={{
                 hidden: { opacity: 0 },
-                show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.6 } }
+                show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.4 } }
               }}
               initial="hidden"
               animate="show"
@@ -76,28 +70,28 @@ export default function CapabilitiesPage() {
                   <motion.div 
                     key={idx} 
                     variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                      hidden: { opacity: 0, x: 20 },
+                      show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
                     }}
                     className="group flex items-center justify-between border-b border-gray-200 py-6 md:py-8 cursor-pointer relative overflow-hidden"
                   >
                     {/* Animated Underline */}
-                    <div className="absolute bottom-0 left-0 h-[2px] bg-black w-0 group-hover:w-full transition-all duration-700 ease-[0.16,1,0.3,1] z-20" />
+                    <div className="absolute bottom-0 left-0 h-[2px] bg-[#C9A227] w-0 group-hover:w-full transition-all duration-700 ease-[0.16,1,0.3,1] z-20" />
                     
                     {/* Subtle ambient glow behind the item on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-0 transition-all duration-1000 pointer-events-none z-0" />
+                    <div className="absolute inset-0 bg-[#C9A227]/5 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-0" />
                     
-                    <div className="flex items-center gap-4 md:gap-6 relative z-10">
-                      <span className="text-sm md:text-base font-mono tracking-widest text-brand-accent/60 group-hover:text-brand-accent transition-colors duration-300">
+                    <div className="flex items-center gap-4 md:gap-8 relative z-10">
+                      <span className="text-sm md:text-base font-mono tracking-widest text-[#C9A227]">
                         {num}
                       </span>
-                      <span className="text-2xl md:text-4xl font-light tracking-wide text-gray-400 group-hover:text-black group-hover:translate-x-4 transition-all duration-500">
+                      <span className="text-2xl md:text-3xl font-medium tracking-tight text-gray-400 group-hover:text-[#1A1A1A] group-hover:translate-x-4 transition-all duration-500">
                         {title}
                       </span>
                     </div>
 
-                    <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-black group-hover:bg-black transition-colors duration-500 flex-shrink-0">
-                       <svg className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-white transition-all duration-500 -rotate-45 group-hover:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <div className="relative z-10 w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#C9A227] group-hover:bg-[#C9A227] transition-colors duration-500 flex-shrink-0">
+                       <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-all duration-500 -rotate-45 group-hover:rotate-0" />
                     </div>
                   </motion.div>
                 );
@@ -109,107 +103,155 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* SECTION 1: Merchandising */}
-      <section className="w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      <section className="relative w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24 relative z-10">
+          
+          {/* Content */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 flex flex-col space-y-6 order-2 lg:order-1"
           >
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-snug">
-              Streamlined Sourcing and Professional Merchandising
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-[#1A1A1A]">
+              Streamlined Sourcing & <br /> Professional Merchandising
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed font-light mb-8">
+            <p className="text-gray-600 text-lg leading-relaxed max-w-xl">
               We handle every phase of the merchandising cycle to give you complete peace of mind. From transparent cost negotiation and bill-of-materials (BOM) management to material procurement and daily line tracking, our expert merchandisers keep your order on schedule and within budget.
             </p>
+            
+            <div className="flex flex-col space-y-4 pt-4">
+              {['Transparent Cost Negotiation', 'BOM Management', 'Daily Line Tracking'].map((item, i) => (
+                <div key={i} className="flex items-center space-x-3 text-sm font-medium text-[#1A1A1A]">
+                  <CheckCircle2 className="w-5 h-5 text-[#C9A227]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
           
+          {/* Image */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full lg:w-1/2 relative group"
+            className="w-full lg:w-1/2 relative group order-1 lg:order-2"
           >
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm bg-gray-100 shadow-xl">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[2rem] bg-gray-200 shadow-2xl">
+              <div className="absolute inset-0 bg-black/10 z-10 transition-colors duration-500 group-hover:bg-transparent" />
               <Image 
                 src="/merchandising.png" 
                 alt="Professional Merchandising" 
                 fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
+            
+            {/* Floating Glass Stat */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="absolute -bottom-6 -right-6 bg-white/90 backdrop-blur-md border border-white/50 p-6 rounded-2xl shadow-xl z-20 hidden md:block"
+            >
+              <div className="text-3xl font-bold text-[#C9A227]">100%</div>
+              <div className="text-sm font-medium text-gray-600 mt-1">Timeline Compliance</div>
+            </motion.div>
           </motion.div>
+
         </div>
       </section>
 
       {/* SECTION 2: Fabric Development */}
-      <section className="w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#f8f8f8]">
-        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24">
+      <section className="relative w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24 relative z-10">
           
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full lg:w-1/2 grid grid-cols-2 gap-4"
-          >
-            <div className="relative w-full aspect-square overflow-hidden rounded-sm bg-gray-200 group">
-              <Image src="/process-sourcing.png" alt="Lab Dips" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-            </div>
-            <div className="relative w-full aspect-square overflow-hidden rounded-sm bg-gray-200 group">
-              <Image src="/process-engineering.png" alt="GSM Control" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-            </div>
-          </motion.div>
+          {/* Overlapping Images */}
+          <div className="w-full lg:w-1/2 relative h-[500px] md:h-[600px]">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="absolute top-0 left-0 w-[70%] h-[70%] rounded-[2rem] overflow-hidden shadow-2xl z-10 group"
+            >
+              <div className="absolute inset-0 bg-black/10 z-10 transition-colors duration-500 group-hover:bg-transparent" />
+              <Image src="/process-sourcing.png" alt="Lab Dips" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 30vw" />
+            </motion.div>
 
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="absolute bottom-0 right-0 w-[65%] h-[60%] rounded-[2rem] overflow-hidden shadow-2xl z-20 border-8 border-white group"
+            >
+              <div className="absolute inset-0 bg-black/10 z-10 transition-colors duration-500 group-hover:bg-transparent" />
+              <Image src="/process-engineering.png" alt="GSM Control" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 30vw" />
+            </motion.div>
+          </div>
+
+          {/* Content */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 flex flex-col space-y-6"
           >
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-snug">
-              Technical Fabric Development & Quality Assurance
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-[#1A1A1A]">
+              Technical Fabric <br /> Development
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed font-light mb-10">
-              Our textile engineering background enables us to innovate and execute complex fabric requirements across Knit, Woven, and Sweater categories.
+            <p className="text-gray-600 text-lg leading-relaxed max-w-xl mb-4">
+              Our textile engineering background enables us to innovate and execute complex fabric requirements across Knit, Woven, and Sweater categories. We don't just source fabrics; we engineer them to exact specifications.
             </p>
             
-            <ul className="flex flex-col gap-4">
-              {['Fabric Customization', 'GSM & Shrinkage Control', 'Lab Dips & Strike-Offs'].map((feature, i) => (
-                <li key={i} className="flex items-center gap-4 text-lg font-medium text-black">
-                  <div className="w-8 h-[1px] bg-black"></div>
-                  {feature}
-                </li>
+            <div className="flex flex-col space-y-6">
+              {[
+                { title: 'Fabric Customization', desc: 'Precise yarn blending for optimal feel.' },
+                { title: 'GSM & Shrinkage Control', desc: 'Ensuring structural integrity post-wash.' },
+                { title: 'Lab Dips & Strike-Offs', desc: 'Perfect color matching under spectrophotometers.' }
+              ].map((feature, i) => (
+                <div key={i} className="flex flex-col p-5 bg-[#FAFAFA] rounded-2xl border border-gray-100 hover:border-[#C9A227]/30 transition-colors">
+                  <h4 className="text-lg font-bold text-[#1A1A1A]">{feature.title}</h4>
+                  <p className="text-sm text-gray-500 mt-1">{feature.desc}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </motion.div>
           
         </div>
       </section>
 
       {/* SECTION 3: Quality & Shipping */}
-      <section className="w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      <section className="relative w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24 relative z-10">
+          
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 flex flex-col space-y-6"
           >
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-snug">
-              Rigorous Quality Assurance & Global Shipping
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-[#1A1A1A]">
+              Rigorous Quality Assurance & Global Logistics
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed font-light mb-6">
-              Quality is built into every stage of our workflow. We enforce strict inline inspections during cutting, sewing, and finishing, topped with a comprehensive final audit.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed font-light">
-              Our logistics team handles all export documentation, customs compliance, and freight forwarding to ensure smooth, hassle-free delivery to your destination port.
-            </p>
+            <div className="prose prose-lg text-gray-600">
+              <p>
+                We provide absolute certainty regarding quality inspection. Our production mirrors the approved PP samples perfectly. Quality is integrated into every workflow stage with strict inline and final audits.
+              </p>
+              <p className="font-medium text-[#1A1A1A] mt-4">
+                Proactive Communication is our standard. If an anomaly is detected, we resolve it immediately through collaborative engineering to ensure flawless goods.
+              </p>
+              <p className="mt-4">
+                Our logistics team navigates all export documentation, customs compliance, and freight forwarding to ensure smooth, hassle-free delivery to any destination port globally.
+              </p>
+            </div>
           </motion.div>
           
           <motion.div 
@@ -219,35 +261,41 @@ export default function CapabilitiesPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full lg:w-1/2 flex flex-col gap-6"
           >
-            <div className="relative w-full aspect-video overflow-hidden rounded-sm bg-gray-100 group">
-              <Image src="/process-quality.png" alt="Quality Inspection" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="relative w-full aspect-video overflow-hidden rounded-[2rem] bg-gray-200 shadow-xl group">
+              <div className="absolute inset-0 bg-black/10 z-10 transition-colors duration-500 group-hover:bg-transparent" />
+              <Image src="/process-quality.png" alt="Quality Inspection" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
-            <div className="relative w-full aspect-video overflow-hidden rounded-sm bg-gray-100 group">
-              <Image src="/export-logistics.png" alt="Export Logistics" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="relative w-full aspect-video overflow-hidden rounded-[2rem] bg-gray-200 shadow-xl group">
+              <div className="absolute inset-0 bg-black/10 z-10 transition-colors duration-500 group-hover:bg-transparent" />
+              <Image src="/export-logistics.png" alt="Export Logistics" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
           </motion.div>
+
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="w-full py-32 bg-black text-white px-4 text-center">
+      {/* FINAL CTA - PREMIUM LUXURY */}
+      <section className="relative w-full py-32 bg-[#0F172A] text-white px-4 text-center overflow-hidden">
+        
+        {/* Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C9A227]/10 rounded-full blur-[100px] pointer-events-none" />
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-3xl mx-auto flex flex-col items-center"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-3xl mx-auto flex flex-col items-center relative z-10"
         >
-          <h4 className="text-sm font-mono tracking-widest text-zinc-500 mb-6 uppercase">Have a Product in Mind?</h4>
-          <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-10">
-            Let's Discuss Your Requirements
+          <h4 className="text-sm font-bold tracking-[0.3em] text-[#C9A227] mb-6 uppercase">Ready to Source?</h4>
+          <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-10 text-white">
+            Let's Discuss Your Next <br /> Manufacturing Project
           </h2>
           <Button 
             href="/contact" 
-            variant="outline"
-            className="h-16 px-10 text-base font-semibold tracking-widest border-white text-white hover:bg-white hover:text-black uppercase"
+            className="h-16 px-12 text-sm font-bold tracking-[0.2em] bg-[#C9A227] text-white hover:bg-white hover:text-[#0F172A] hover:shadow-[0_0_40px_rgba(201,162,39,0.4)] transition-all duration-500 uppercase rounded-full"
           >
-            Contact Us
+            Start a Conversation
           </Button>
         </motion.div>
       </section>

@@ -92,18 +92,29 @@ export default function LookbookPage() {
   const dividerY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <main className="w-full min-h-screen bg-white text-black pt-32 pb-24 selection:bg-brand-accent selection:text-white">
+    <main className="w-full min-h-screen bg-white text-[#1A1A1A] pt-32 pb-24 selection:bg-[#C9A227] selection:text-white">
       
-      {/* Intro Section */}
-      <section className="w-full px-4 sm:px-6 lg:px-12 py-16 md:py-24">
-        <div className="max-w-[1400px] mx-auto flex justify-center">
+      {/* Intro Section - Cinematic Upgrade */}
+      <section className="w-full px-4 sm:px-6 lg:px-12 py-16 md:py-24 bg-white relative">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A227]/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-[1400px] mx-auto flex flex-col items-center text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full md:w-3/5 lg:w-1/2"
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <p className="text-2xl md:text-3xl lg:text-[2rem] font-medium leading-[1.3] tracking-tight">
+            <div className="inline-flex items-center justify-center space-x-2 text-sm font-semibold tracking-[0.2em] text-[#C9A227] uppercase mb-6">
+              <span className="w-8 h-px bg-[#C9A227]" />
+              <span>Collection 2026</span>
+              <span className="w-8 h-px bg-[#C9A227]" />
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-12 text-[#1A1A1A]">
+              The <span className="italic font-serif text-[#C9A227]">Showcase.</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl lg:text-[1.75rem] font-light leading-relaxed tracking-wide max-w-4xl mx-auto text-gray-500">
               {pageDescription}
             </p>
           </motion.div>
@@ -111,13 +122,13 @@ export default function LookbookPage() {
       </section>
 
       {/* Lookbooks Container */}
-      <div ref={containerRef} className="w-full">
+      <div ref={containerRef} className="w-full bg-[#FAFAFA]">
         {lookbooks.map((look, index) => (
           <React.Fragment key={look.id}>
             
             {/* Full Width Divider (if present) */}
             {look.dividerImage && (
-              <div className="w-full h-[40vh] md:h-[60vh] relative overflow-hidden my-20 md:my-32">
+              <div className="w-full h-[40vh] md:h-[60vh] relative overflow-hidden my-20 md:my-32 shadow-2xl">
                 <motion.div style={{ y: dividerY }} className="absolute inset-0 -top-[20%] h-[140%] w-full">
                   <Image 
                     src={look.dividerImage}
@@ -125,7 +136,7 @@ export default function LookbookPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/10" />
+                  <div className="absolute inset-0 bg-[#0F172A]/20" />
                 </motion.div>
               </div>
             )}
@@ -136,33 +147,34 @@ export default function LookbookPage() {
                 
                 {/* Sticky Editorial Image with Hotspots */}
                 <div className="w-full lg:w-1/2 relative h-auto">
-                  <div className="lg:sticky lg:top-32 w-full aspect-[3/4] lg:h-[calc(100vh-160px)] lg:aspect-auto overflow-hidden bg-gray-100 rounded-sm group relative">
+                  <div className="lg:sticky lg:top-32 w-full aspect-[3/4] lg:h-[calc(100vh-160px)] lg:aspect-auto overflow-hidden bg-gray-200 rounded-[2rem] shadow-2xl group relative border-4 border-white">
+                    <div className="absolute inset-0 bg-black/5 z-10 transition-colors duration-500 group-hover:bg-transparent pointer-events-none" />
                     <Image 
                       src={look.mainImage}
                       alt={look.lookName}
                       fill
                       priority={index === 0}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
 
                     {/* Hotspots */}
                     {look.products.map((product) => (
                       <div 
                         key={`hotspot-${product.id}`}
-                        className="absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer group/hotspot"
+                        className="absolute z-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer group/hotspot"
                         style={{ top: product.hotspot.top, left: product.hotspot.left }}
                       >
-                        <div className="relative flex items-center justify-center w-6 h-6 md:w-8 md:h-8">
+                        <div className="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
                           {/* Pulsing ring */}
-                          <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 group-hover/hotspot:animate-ping transition-all"></span>
+                          <span className="absolute inline-flex h-full w-full rounded-full bg-[#C9A227] opacity-60 group-hover/hotspot:animate-ping transition-all duration-700"></span>
                           {/* Inner core */}
-                          <span className="relative inline-flex rounded-full h-5 w-5 md:h-6 md:w-6 bg-white border border-gray-200 shadow-lg items-center justify-center group-hover/hotspot:scale-110 transition-transform">
-                            <svg className="w-3 h-3 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
+                          <span className="relative inline-flex rounded-full h-6 w-6 md:h-7 md:w-7 bg-[#C9A227] border-2 border-white shadow-lg items-center justify-center group-hover/hotspot:scale-110 transition-transform shadow-[#C9A227]/40">
+                            <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
                           </span>
                         </div>
                         
                         {/* Tooltip on hover */}
-                        <div className={`absolute top-1/2 -translate-y-1/2 opacity-0 group-hover/hotspot:opacity-100 transition-opacity duration-300 pointer-events-none bg-white px-3 py-2 text-xs font-semibold whitespace-nowrap shadow-xl border border-gray-100 rounded z-20 hidden md:block ${look.layout === 'right' ? 'right-full mr-4' : 'left-full ml-4'}`}>
+                        <div className={`absolute top-1/2 -translate-y-1/2 opacity-0 group-hover/hotspot:opacity-100 transition-opacity duration-300 pointer-events-none bg-white/95 backdrop-blur-md px-4 py-3 text-xs font-bold text-[#1A1A1A] whitespace-nowrap shadow-2xl border border-gray-100 rounded-xl z-30 hidden md:block ${look.layout === 'right' ? 'right-full mr-4' : 'left-full ml-4'}`}>
                           {product.name}
                         </div>
                       </div>
@@ -173,52 +185,52 @@ export default function LookbookPage() {
                 {/* Scrollable Product List */}
                 <div className="w-full lg:w-1/2 flex flex-col pt-10 lg:pt-0">
                   <motion.div 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     className="text-center mb-16"
                   >
-                    <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">{look.lookName}</h4>
-                    <h3 className="text-xl font-medium tracking-wide text-black">{look.theme}</h3>
+                    <h4 className="text-xs font-bold tracking-[0.3em] uppercase text-[#C9A227] mb-3">{look.lookName}</h4>
+                    <h3 className="text-3xl md:text-4xl font-medium tracking-wide text-[#1A1A1A]">{look.theme}</h3>
                   </motion.div>
 
-                  <div className="flex flex-col gap-24 lg:gap-32 w-full max-w-lg mx-auto">
+                  <div className="flex flex-col gap-16 lg:gap-24 w-full max-w-lg mx-auto">
                     {look.products.map((product) => (
                       <motion.div 
                         key={product.id}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-150px" }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="flex flex-col items-center group cursor-pointer"
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex flex-col items-center group cursor-pointer bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-xl hover:shadow-[#C9A227]/10 border border-gray-100 transition-all duration-500"
                       >
                         {/* Product Image */}
-                        <div className="relative w-full aspect-[4/5] bg-gray-50 mb-6 overflow-hidden">
+                        <div className="relative w-full aspect-[4/5] bg-gray-50/50 mb-6 overflow-hidden rounded-xl">
                           <Image 
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out mix-blend-multiply"
+                            className="object-contain p-4 group-hover:scale-110 transition-transform duration-700 ease-out mix-blend-multiply"
                           />
                         </div>
                         
                         {/* Product Details */}
                         <div className="text-center w-full px-4">
-                          <h2 className="text-sm font-medium text-black mb-2 leading-snug">{product.name}</h2>
-                          <div className="flex items-center justify-center gap-3 mb-4 text-xs">
-                            <span className="font-bold text-black">{product.price}</span>
-                            <span className="text-gray-400 line-through">{product.originalPrice}</span>
+                          <h2 className="text-base font-bold text-[#1A1A1A] mb-2 leading-snug">{product.name}</h2>
+                          <div className="flex items-center justify-center gap-3 mb-4 text-sm">
+                            <span className="font-bold text-[#C9A227]">{product.price}</span>
+                            <span className="text-gray-400 line-through font-light">{product.originalPrice}</span>
                           </div>
                           
                           <div className="flex justify-center gap-2">
                             {product.tags ? (
                               product.tags.map(tag => (
-                                <span key={tag} className={`text-[9px] font-bold tracking-widest uppercase px-2 py-1 ${tag === '-30%' ? 'bg-black text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                <span key={tag} className={`text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full ${tag === '-30%' ? 'bg-[#0F172A] text-white' : 'bg-gray-100 text-gray-500'}`}>
                                   {tag}
                                 </span>
                               ))
                             ) : (
-                              <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-1 bg-black text-white">
+                              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#0F172A] text-white">
                                 {product.discount}
                               </span>
                             )}
@@ -228,10 +240,10 @@ export default function LookbookPage() {
                     ))}
                   </div>
                   
-                  {/* End of Look Marker (only if it's the last item, or just standard spacing) */}
+                  {/* End of Look Marker */}
                   {index === lookbooks.length - 1 && (
                     <div className="w-full flex justify-center mt-32 mb-10">
-                       <div className="w-px h-16 bg-gray-200"></div>
+                       <div className="w-px h-24 bg-gradient-to-b from-[#C9A227] to-transparent"></div>
                     </div>
                   )}
                 </div>

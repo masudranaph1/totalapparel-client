@@ -2,63 +2,72 @@
 
 import React from "react";
 import Link from "next/link";
-import { Button } from "./ui/Button";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-brand-dark text-brand-white font-sans flex flex-col pt-20">
+    <footer className="relative w-full overflow-hidden bg-[#0a0a0a] text-white pt-20 pb-6 border-t border-white/10">
       
-      {/* Top CTA Section */}
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 pb-20 border-b border-brand-border/30 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-4">
-            Start Your Next Project
-          </h2>
-          <p className="text-brand-muted font-light text-lg">
-            Partner with us for world-class garment manufacturing.
-          </p>
-        </div>
-        <Button 
-          href="/contact" 
-          variant="outline"
-          className="border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-white h-14 px-8 tracking-wider font-semibold uppercase shrink-0"
-        >
-          Request a Quote
-        </Button>
+      {/* Colorful Animated Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], rotate: [0, 90, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-tr from-[#C9A227]/30 to-purple-900/40 blur-[120px]"
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2], rotate: [0, -90, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-0 right-0 w-[40vw] h-[40vw] rounded-full bg-gradient-to-bl from-blue-900/30 to-[#C9A227]/20 blur-[120px]"
+        />
       </div>
 
-      {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto w-full py-20 px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
-          
-          {/* Column 1: Brand Info */}
-          <div className="flex flex-col lg:pr-12">
-            <Link href="/" className="mb-6 block">
-              <span className="text-2xl font-bold tracking-widest text-brand-white">TOTAL APPAREL</span>
-            </Link>
-            <p className="text-brand-muted font-light leading-relaxed mb-8">
-              Premium Apparel Sourcing & Garment Manufacturing
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-24">
+        
+        {/* Top Massive CTA */}
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 border-b border-white/10 pb-10 mb-10 relative text-center lg:text-left">
+          <div className="max-w-3xl w-full">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] mb-4">
+              Let's Build <br className="hidden sm:block" />
+              <span className="text-[#C9A227] italic font-serif text-5xl md:text-6xl lg:text-7xl">Together.</span>
+            </h2>
+            <p className="text-sm md:text-base text-gray-300 font-light max-w-xl mx-auto lg:mx-0">
+              Partner with the industry's finest. We engineer apparel solutions that define global brands.
             </p>
-            
-            <div className="flex items-center gap-4">
-              <Link href="#" className="w-10 h-10 border border-brand-border/30 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-brand-white hover:border-brand-accent transition-all">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                <span className="sr-only">LinkedIn</span>
+          </div>
+          <Link href="/contact" className="w-full lg:w-auto group relative inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full overflow-hidden shrink-0 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(201,162,39,0.3)] transition-shadow duration-500">
+            <span className="absolute inset-0 w-0 bg-[#C9A227] group-hover:w-full transition-all duration-700 ease-out" />
+            <span className="relative text-[10px] font-black uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-500">
+              Start Project
+            </span>
+          </Link>
+        </div>
+
+        {/* Navigation Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-y-12 gap-x-6 lg:gap-8 pb-12 relative text-center sm:text-left">
+          
+          <div className="col-span-2 md:col-span-4 lg:col-span-5 flex flex-col items-center sm:items-start justify-between">
+            <div>
+              <Link href="/" className="inline-block mb-6">
+                <span className="text-2xl font-black tracking-[0.2em] uppercase text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                  TOTAL APPAREL
+                </span>
               </Link>
-              <Link href="#" className="w-10 h-10 border border-brand-border/30 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-brand-white hover:border-brand-accent transition-all">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                <span className="sr-only">Instagram</span>
-              </Link>
+              <p className="text-gray-300 max-w-sm text-sm font-light leading-relaxed mb-6 mx-auto sm:mx-0">
+                Premium Apparel Sourcing & Garment Manufacturing. Based in Dhaka, Bangladesh. Delivering globally.
+              </p>
+              <a href="mailto:id@totaltexbd.com" className="text-lg text-white hover:text-[#C9A227] transition-colors border-b border-[#C9A227]/30 pb-1">
+                id@totaltexbd.com
+              </a>
             </div>
           </div>
 
-          {/* Column 2: Company */}
-          <div className="flex flex-col">
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-brand-muted mb-8">Company</h4>
-            <ul className="flex flex-col space-y-4">
-              {["About", "Capabilities", "Process", "Products", "Contact"].map(link => (
+          <div className="col-span-1 md:col-span-1 lg:col-span-2">
+            <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-[#C9A227] mb-6">Company</h4>
+            <ul className="flex flex-col gap-3">
+              {["About Us", "Our Process", "Sustainability", "News", "Contact"].map(link => (
                 <li key={link}>
-                  <Link href={`/${link.toLowerCase()}`} className="text-brand-border font-light hover:text-brand-white transition-colors">
+                  <Link href={`/${link.toLowerCase().replace(/ /g, '-')}`} className="text-xs text-gray-400 hover:text-white sm:hover:translate-x-2 transition-all inline-block font-medium">
                     {link}
                   </Link>
                 </li>
@@ -66,13 +75,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Capabilities */}
-          <div className="flex flex-col">
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-brand-muted mb-8">Capabilities</h4>
-            <ul className="flex flex-col space-y-4">
-              {["Apparel Sourcing", "Fabric Development", "Merchandising", "Quality Assurance", "Global Logistics"].map(link => (
+          <div className="col-span-1 md:col-span-2 lg:col-span-3">
+            <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-[#C9A227] mb-6">Capabilities</h4>
+            <ul className="flex flex-col gap-3">
+              {["Fabric Development", "Garment Manufacturing", "Quality Control", "Global Logistics", "Merchandising"].map(link => (
                 <li key={link}>
-                  <Link href="/capabilities" className="text-brand-border font-light hover:text-brand-white transition-colors">
+                  <Link href="/capabilities" className="text-xs text-gray-400 hover:text-white sm:hover:translate-x-2 transition-all inline-block font-medium">
                     {link}
                   </Link>
                 </li>
@@ -80,42 +88,33 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
-          <div className="flex flex-col">
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-brand-muted mb-8">Contact</h4>
-            <ul className="flex flex-col space-y-4">
-              <li className="text-brand-border font-light">
-                Dhaka, Bangladesh
-              </li>
-              <li>
-                <a href="mailto:id@totaltexbd.com" className="text-brand-border font-light hover:text-brand-white transition-colors">
-                  id@totaltexbd.com
-                </a>
-              </li>
-              <li>
-                <a href="tel:+8801987360371" className="text-brand-border font-light hover:text-brand-white transition-colors">
-                  +880 198 736 0371
-                </a>
-              </li>
+          <div className="col-span-2 sm:col-span-1 lg:col-span-2 pt-6 sm:pt-0">
+            <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-[#C9A227] mb-6">Socials</h4>
+            <ul className="flex flex-row justify-center sm:flex-col gap-6 sm:gap-3">
+              {["LinkedIn", "Instagram", "Facebook", "Twitter"].map(link => (
+                <li key={link}>
+                  <a href="#" className="text-xs text-gray-400 hover:text-[#C9A227] transition-colors inline-block font-medium">
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          
+
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="w-full border-t border-brand-border/20 bg-brand-text">
-        <div className="max-w-7xl mx-auto py-8 px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm font-light text-brand-muted">
-            © 2026 TOTAL APPAREL. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="relative border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 overflow-hidden">
+          <p className="text-[9px] text-gray-500 font-bold tracking-[0.2em] uppercase text-center md:text-left">
+            &copy; {new Date().getFullYear()} TOTAL APPAREL BD. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex items-center gap-6 text-sm font-light text-brand-muted">
-            <Link href="#" className="hover:text-brand-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-brand-white transition-colors">Terms of Service</Link>
+          <div className="flex gap-4 sm:gap-6 text-[9px] text-gray-500 font-bold tracking-[0.2em] uppercase">
+            <Link href="/privacy" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
           </div>
         </div>
-      </div>
 
+      </div>
     </footer>
   );
 }
